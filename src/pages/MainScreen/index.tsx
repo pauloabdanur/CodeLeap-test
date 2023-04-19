@@ -7,7 +7,7 @@ import Post from '../../components/Post';
 
 const MainScreen = () => {
   const username = useAppSelector((state) => state.username.name);
-  const contents = useAppSelector((state) => state.createContent.contents);
+  const posts = useAppSelector((state) => state.post.posts);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,8 +23,8 @@ const MainScreen = () => {
           <Title>CodeLeap Network</Title>
         </TitleBox>
         <NewPost />
-        {contents.map((content) => (
-          <Post content={content} username={username} key={content.id} />
+        {posts.map((post) => (
+          <Post post={post} username={username} key={post.id} />
         ))}
       </Content>
     </MyContainer>

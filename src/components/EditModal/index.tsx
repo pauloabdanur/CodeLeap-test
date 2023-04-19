@@ -1,6 +1,6 @@
 import { Box, Modal } from '@mui/material';
 import { useAppDispatch } from '../../redux/store';
-import { updateContent } from '../../redux/features/content/contentSlice';
+import { updatePost } from '../../redux/features/post/postSlice';
 import {
   CancelButton,
   EditBox,
@@ -13,22 +13,22 @@ import {
 import { ChangeEvent, useState } from 'react';
 
 type Props = {
-  content: {
+  post: {
     id: string;
     username: string;
     title: string;
-    postText: string;
+    content: string;
   };
   openModal: boolean;
   close: () => void;
 };
 
-const EditModal = ({ content, openModal, close }: Props) => {
+const EditModal = ({ post, openModal, close }: Props) => {
   const dispatch = useAppDispatch();
 
-  const { id, username, title, postText } = content;
+  const { id, username, title, content } = post;
   const [titleValue, setTitleValue] = useState(title);
-  const [contentValue, setContentValue] = useState(postText);
+  const [contentValue, setContentValue] = useState(content);
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -42,11 +42,11 @@ const EditModal = ({ content, openModal, close }: Props) => {
 
   const handleEdit = (id: string) => {
     dispatch(
-      updateContent({
+      updatePost({
         id,
         username: username,
         title: titleValue,
-        postText: contentValue,
+        content: contentValue,
       })
     );
     close();

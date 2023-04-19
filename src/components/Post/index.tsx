@@ -19,24 +19,24 @@ import DeleteModal from '../DeleteModal';
 import EditModal from '../EditModal';
 
 type Props = {
-  content: {
+  post: {
     id: string;
     username: string;
     title: string;
-    postText: string;
+    content: string;
   };
   username: string;
 };
 
-const Posts = ({ content, username }: Props) => {
+const Posts = ({ post, username }: Props) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
 
   return (
     <div>
-      <MyContainer key={content.id}>
+      <MyContainer key={post.id}>
         <TitleBox>
-          <Title>{content.title}</Title>
+          <Title>{post.title}</Title>
           <IconWrapper>
             <IconButton onClick={() => setOpenDeleteModal(true)}>
               <Icon src={deleteIcon} alt="" />
@@ -51,15 +51,15 @@ const Posts = ({ content, username }: Props) => {
             <Author>@{username}</Author>
             <Author>25 minutes ago</Author>
           </Box>
-          <Content>{content.postText}</Content>
+          <Content>{post.content}</Content>
         </ContentWrapper>
         <DeleteModal
-          id={content.id}
+          id={post.id}
           openModal={openDeleteModal}
           close={() => setOpenDeleteModal(false)}
         />
         <EditModal
-          content={content}
+          post={post}
           openModal={openEditModal}
           close={() => setOpenEditModal(false)}
         />

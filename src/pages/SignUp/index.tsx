@@ -9,7 +9,7 @@ import {
 } from './styles';
 import { ChangeEvent, useState } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
 import { setUsername } from '../../redux/features/userName/userNameSlice';
 import { useNavigate } from 'react-router-dom';
 

@@ -2,12 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 import { TypedUseSelectorHook, useDispatch } from 'react-redux';
 import { userNameReducer } from './features/userName/userNameSlice';
-import { contentReducer } from './features/content/contentSlice';
+import { postReducer } from './features/post/postSlice';
 
 const store = configureStore({
   reducer: {
     username: userNameReducer,
-    createContent: contentReducer,
+    post: postReducer,
   },
 });
 

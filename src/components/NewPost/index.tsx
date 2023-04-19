@@ -10,7 +10,7 @@ import {
 import { Box } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { createContent } from '../../redux/features/content/contentSlice';
+import { createPost } from '../../redux/features/post/postSlice';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -33,11 +33,11 @@ const NewPost = () => {
 
   const handleClick = () => {
     dispatch(
-      createContent({
+      createPost({
         id: uuidv4(),
         username: username,
         title: titleValue,
-        postText: contentValue,
+        content: contentValue,
       })
     );
     setTitleValue('');

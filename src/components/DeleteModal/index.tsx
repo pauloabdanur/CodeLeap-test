@@ -1,5 +1,5 @@
 import { Box, Modal } from '@mui/material';
-import { deleteContent } from '../../redux/features/content/contentSlice';
+import { deletePost } from '../../redux/features/post/postSlice';
 import { useAppDispatch } from '../../redux/store';
 import { CancelButton, DeleteBox, DeleteButton, ModalTitle } from './styles';
 
@@ -13,7 +13,7 @@ const DeleteModal = ({ id, openModal, close }: Props) => {
   const dispatch = useAppDispatch();
 
   const handleDelete = (id: string) => {
-    dispatch(deleteContent({ id }));
+    dispatch(deletePost({ id }));
   };
 
   return (
