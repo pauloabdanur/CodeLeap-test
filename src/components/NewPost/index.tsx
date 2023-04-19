@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useId } from 'react';
+import { ChangeEvent, useState } from 'react';
 import {
   InputName,
   MyContainer,
@@ -12,13 +12,14 @@ import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { createContent } from '../../redux/features/content/contentSlice';
 
+import { v4 as uuidv4 } from 'uuid';
+
 const NewPost = () => {
-  // const contents = useAppSelector((state) => state.createContent.contents);
   const dispatch = useAppDispatch();
+  const username = useAppSelector((state) => state.username.name);
+
   const [titleValue, setTitleValue] = useState('');
   const [contentValue, setContentValue] = useState('');
-
-  const id = useId();
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -33,9 +34,10 @@ const NewPost = () => {
   const handleClick = () => {
     dispatch(
       createContent({
-        id,
+        id: uuidv4(),
+        username: username,
         title: titleValue,
-        content: contentValue,
+        postText: contentValue,
       })
     );
     setTitleValue('');
