@@ -1,12 +1,13 @@
 import { Content, MyContainer, Title, TitleBox } from './styles';
 import NewPost from '../../components/NewPost';
-import Posts from '../../components/Posts';
 import { useEffect } from 'react';
 import { useAppSelector } from '../../redux/store';
 import { useNavigate } from 'react-router-dom';
+import Post from '../../components/Post';
 
 const MainScreen = () => {
   const username = useAppSelector((state) => state.username.name);
+  const contents = useAppSelector((state) => state.createContent.contents);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +23,9 @@ const MainScreen = () => {
           <Title>CodeLeap Network</Title>
         </TitleBox>
         <NewPost />
-        <Posts />
+        {contents.map((content) => (
+          <Post content={content} username={username} key={content.id} />
+        ))}
       </Content>
     </MyContainer>
   );

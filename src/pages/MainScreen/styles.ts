@@ -13,6 +13,7 @@ export const MyContainer = styled.div`
 export const Content = styled(Box)`
   width: 800px;
   background-color: #fff;
+  height: 100%;
 `;
 
 export const TitleBox = styled(Box)`
