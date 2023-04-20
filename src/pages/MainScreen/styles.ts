@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 export const MyContainer = styled.div`
   position: absolute;
@@ -21,6 +21,7 @@ export const TitleBox = styled(Box)`
   height: 80px;
   top: 0px;
   background-color: #7695ec;
+  display: flex;
 `;
 
 export const Title = styled(Typography)`
@@ -29,4 +30,18 @@ export const Title = styled(Typography)`
   line-height: 26px;
   color: #fff;
   padding: 27px 27px 37px;
+`;
+
+export const Logout = styled(Button)`
+  margin-left: auto;
+  margin-right: 20px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #fff;
+
+  &:hover {
+    color: #ff5151;
+  }
 `;

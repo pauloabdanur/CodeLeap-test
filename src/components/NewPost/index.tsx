@@ -9,7 +9,7 @@ import {
 } from './styles';
 import { Box } from '@mui/material';
 
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch } from '../../redux/hooks';
 import { addNewPost } from '../../actions/addNewPost';
 import { getUser } from '../../utils';
 

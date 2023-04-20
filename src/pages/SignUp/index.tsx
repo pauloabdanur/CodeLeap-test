@@ -9,13 +9,10 @@ import {
 } from './styles';
 import { ChangeEvent, useState } from 'react';
 
-import { useAppDispatch } from '../../redux/hooks';
-import { setUsername } from '../../redux/features/userName/userNameSlice';
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [user, setUser] = useState('');
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
