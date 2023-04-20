@@ -1,6 +1,7 @@
-import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { NewPostType, PostType } from '../../../types';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { fetchPosts } from '../../../actions/fetchPosts';
+import { addNewPost } from '../../../actions/addNewPost';
+import { PostType } from '../../../types';
 
 export interface PostState {
   posts: PostType[];
@@ -13,44 +14,6 @@ const initialState: PostState = {
   status: 'idle',
   error: null,
 };
-
-export const fetchPosts = createAsyncThunk(
-  'posts/fetchPosts',
-  async (offset: number) => {
-    try {
-      const response = await axios
-        .get(`https://dev.codeleap.co.uk/careers/?limit=10&offset=${offset}`)
-        .then((res) => res.data)
-        .then((res) => res.results);
-      return response;
-    } catch (err: any) {
-      return err.message;
-    }
-  }
-);
-
-export const addNewPost = createAsyncThunk(
-  'posts/addNewPost',
-  async (post: NewPostType) => {
-    try {
-      const response = await axios.post(
-        'https://dev.codeleap.co.uk/careers/',
-        {
-          username: post.username,
-          title: post.title,
-          content: post.content,
-        },
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
-      return response.data;
-    } catch (err: any) {
-      console.log(err.message);
-      return err;
-    }
-  }
-);
 
 const PostSlice = createSlice({
   name: 'posts',
@@ -82,5 +45,4 @@ const PostSlice = createSlice({
   },
 });
 
-// export const { createPost } = PostSlice.actions;
 export const postReducer = PostSlice.reducer;

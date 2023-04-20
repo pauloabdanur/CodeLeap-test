@@ -2,7 +2,7 @@ import { Content, MyContainer, Title, TitleBox } from './styles';
 import NewPost from '../../components/NewPost';
 import { useEffect } from 'react';
 import Post from '../../components/Post';
-import { fetchPosts } from '../../redux/features/post/postSlice';
+import { fetchPosts } from '../../actions/fetchPosts';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 
 const MainScreen = () => {
