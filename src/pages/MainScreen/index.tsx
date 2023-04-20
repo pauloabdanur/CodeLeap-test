@@ -15,7 +15,6 @@ const MainScreen = () => {
   const postError = useAppSelector((state) => state.posts.error);
   const postsCount = useAppSelector((state) => state.posts.count);
 
-  const [offset, setOffset] = useState(0);
   const [loggedUser, setLoggedUser] = useState(getUser());
 
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ const MainScreen = () => {
     if (postStatus === 'idle') {
       dispatch(fetchPosts(0));
     }
-  }, [postStatus, dispatch, loggedUser, navigate, offset]);
+  }, [postStatus, dispatch, loggedUser, navigate]);
 
   let content;
   if (postStatus === 'loading') {
