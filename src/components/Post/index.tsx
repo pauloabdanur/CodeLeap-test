@@ -19,6 +19,7 @@ import DeleteModal from '../DeleteModal';
 import EditModal from '../EditModal';
 import type { PostType } from '../../types';
 import { getUser } from '../../utils';
+import moment from 'moment';
 
 type Props = {
   post: PostType;
@@ -30,6 +31,8 @@ const Post = ({ post }: Props) => {
   const [openEditModal, setOpenEditModal] = useState(false);
 
   const loggedUser = getUser();
+
+  const postTime = moment(created_datetime).fromNow();
 
   return (
     <div>
@@ -50,7 +53,7 @@ const Post = ({ post }: Props) => {
         <ContentWrapper>
           <Box display="flex" justifyContent="space-between">
             <Author>@{username}</Author>
-            <Author>25 minutes ago</Author>
+            <Author>{postTime}</Author>
           </Box>
           <Content>{content}</Content>
         </ContentWrapper>
