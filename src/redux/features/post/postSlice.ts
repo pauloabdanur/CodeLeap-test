@@ -1,6 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
 import { fetchPosts } from '../../../actions/fetchPosts';
 import { addNewPost } from '../../../actions/addNewPost';
+import { updatePost } from '../../../actions/updatePost';
+import { deletePost } from '../../../actions/deletePost';
+
 import { PostType } from '../../../types';
 
 export interface PostState {
@@ -41,7 +45,16 @@ const PostSlice = createSlice({
           state.status = 'idle';
           state.posts.unshift(action.payload);
         }
-      );
+      )
+      .addCase(updatePost.fulfilled, (state, action) => {
+        state.status = 'idle';
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.posts = state.posts.filter(
+          (post) => post.id !== action.payload.id
+        );
+      });
   },
 });
 

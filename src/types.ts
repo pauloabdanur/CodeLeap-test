@@ -13,6 +13,7 @@ export type NewPostType = {
 };
 
 export type UpdatePostType = {
+  id: number;
   title: string;
   content: string;
 };
