@@ -18,12 +18,29 @@ export const MyContainer = styled.div`
   min-height: 100%;
   background-color: #dddddd;
   animation: ${fadeIn} 0.8s;
+  @media (max-width: 500px) {
+    overflow-x: hidden;
+  }
 `;
 
 export const Content = styled(Box)`
   width: 800px;
   background-color: #fff;
   height: 100%;
+
+  @media (max-width: 1200px) {
+    width: 700px;
+  }
+
+  @media (max-width: 900px) {
+    width: 600px;
+  }
+  @media (max-width: 700px) {
+    width: 500px;
+  }
+  @media (max-width: 500px) {
+    width: 350px;
+  }
 `;
 
 export const TitleBox = styled(Box)`
@@ -32,6 +49,19 @@ export const TitleBox = styled(Box)`
   top: 0px;
   background-color: #7695ec;
   display: flex;
+
+  @media (max-width: 1200px) {
+    width: 700px;
+  }
+  @media (max-width: 900px) {
+    width: 600px;
+  }
+  @media (max-width: 700px) {
+    width: 500px;
+  }
+  @media (max-width: 500px) {
+    width: 350px;
+  }
 `;
 
 export const Title = styled(Typography)`
@@ -40,6 +70,10 @@ export const Title = styled(Typography)`
   line-height: 26px;
   color: #fff;
   padding: 27px 27px 37px;
+  @media (max-width: 500px) {
+    font-size: 16px;
+    padding: 27px 15px;
+  }
 `;
 
 export const Logout = styled(Button)`
@@ -50,6 +84,10 @@ export const Logout = styled(Button)`
   font-size: 16px;
   line-height: 19px;
   color: #fff;
+
+  @media (max-width: 500px) {
+    font-size: 12px;
+  }
 
   &:hover {
     color: #ff5151;

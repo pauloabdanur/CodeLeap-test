@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Box, Button, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 export const MyContainer = styled.div`
   width: 752px;
@@ -7,18 +7,18 @@ export const MyContainer = styled.div`
   border: 1px solid #999999;
   border-radius: 16px;
   margin: 24px;
-`;
-
-export const MyBox = styled(Box)`
-  box-sizing: border-box;
-
-  position: relative;
-  width: 500px;
-  height: 205px;
-
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 16px;
+  @media (max-width: 1200px) {
+    width: 652px;
+  }
+  @media (max-width: 900px) {
+    width: 552px;
+  }
+  @media (max-width: 700px) {
+    width: 452px;
+  }
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 export const Title = styled(Typography)`
@@ -27,6 +27,9 @@ export const Title = styled(Typography)`
   line-height: 26px;
   margin-left: 24px;
   margin-top: 24px;
+  @media (max-width: 500px) {
+    font-size: 20px;
+  }
 `;
 
 export const InputName = styled(Typography)`
@@ -35,6 +38,10 @@ export const InputName = styled(Typography)`
   line-height: 19px;
   margin-left: 24px;
   margin-top: 24px;
+  @media (max-width: 500px) {
+    margin-top: 16px;
+    font-size: 14px;
+  }
 `;
 
 export const TitleInput = styled.input`
@@ -50,6 +57,19 @@ export const TitleInput = styled.input`
   font-size: 14px;
   line-height: 16px;
   padding-left: 10px;
+  @media (max-width: 1200px) {
+    width: 600px;
+  }
+  @media (max-width: 900px) {
+    width: 500px;
+  }
+  @media (max-width: 700px) {
+    width: 400px;
+  }
+  @media (max-width: 500px) {
+    width: 250px;
+    font-size: 12px;
+  }
 `;
 
 export const ContentInput = styled.textarea`
@@ -65,6 +85,19 @@ export const ContentInput = styled.textarea`
   font-size: 14px;
   line-height: 16px;
   padding: 10px 0 0 10px;
+  @media (max-width: 1200px) {
+    width: 600px;
+  }
+  @media (max-width: 900px) {
+    width: 500px;
+  }
+  @media (max-width: 700px) {
+    width: 400px;
+  }
+  @media (max-width: 500px) {
+    width: 250px;
+    font-size: 12px;
+  }
 `;
 
 export const MyButton = styled(Button)<{ disabled?: boolean }>`

@@ -22,6 +22,18 @@ export const DeleteBox = styled(Box)`
   left: 50%;
   transform: translate(-50%, -50%);
   animation: ${fadeIn} 0.8s;
+  @media (max-width: 1200px) {
+    width: 550px;
+  }
+  @media (max-width: 900px) {
+    width: 450px;
+  }
+  @media (max-width: 700px) {
+    width: 350px;
+  }
+  @media (max-width: 500px) {
+    width: 250px;
+  }
 `;
 
 export const ModalTitle = styled(Typography)`
@@ -30,6 +42,18 @@ export const ModalTitle = styled(Typography)`
   font-size: 22px;
   line-height: 26px;
   color: #000;
+  @media (max-width: 1200px) {
+    font-size: 20px;
+  }
+  @media (max-width: 900px) {
+    font-size: 18px;
+  }
+  @media (max-width: 700px) {
+    font-size: 16px;
+  }
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 export const DeleteButton = styled(Button)`
@@ -42,6 +66,26 @@ export const DeleteButton = styled(Button)`
   font-size: 16px;
   line-height: 19px;
   color: #fff;
+  @media (max-width: 1200px) {
+    font-size: 16px;
+    width: 110px;
+    height: 28px;
+  }
+  @media (max-width: 900px) {
+    font-size: 15px;
+    width: 100px;
+  }
+  @media (max-width: 700px) {
+    font-size: 14px;
+    width: 90px;
+    height: 28px;
+  }
+  @media (max-width: 500px) {
+    font-size: 12px;
+    width: 80px;
+    height: 24px;
+  }
+
   &:hover {
     color: #ff5151;
     border: 1px solid #ff5151;
@@ -59,6 +103,26 @@ export const CancelButton = styled(Button)`
   font-size: 16px;
   line-height: 19px;
   color: #000;
+
+  @media (max-width: 1200px) {
+    font-size: 16px;
+    width: 110px;
+    height: 28px;
+  }
+  @media (max-width: 900px) {
+    font-size: 15px;
+    width: 100px;
+  }
+  @media (max-width: 700px) {
+    font-size: 14px;
+    width: 90px;
+    height: 28px;
+  }
+  @media (max-width: 500px) {
+    font-size: 12px;
+    width: 80px;
+    height: 24px;
+  }
   &:hover {
     background: #999;
     color: #fff;

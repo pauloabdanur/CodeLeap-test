@@ -47,7 +47,7 @@ const NewPost = () => {
         placeholder="ex: Hello World"
         value={title}
         onChange={handleTitleChange}
-        maxLength={35}
+        maxLength={30}
       />
       <InputName>Content</InputName>
       <ContentInput

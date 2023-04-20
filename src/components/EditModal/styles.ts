@@ -22,6 +22,19 @@ export const EditBox = styled(Box)`
   left: 50%;
   transform: translate(-50%, -50%);
   animation: ${fadeIn} 0.8s;
+  @media (max-width: 1200px) {
+    width: 550px;
+  }
+  @media (max-width: 900px) {
+    width: 450px;
+  }
+  @media (max-width: 700px) {
+    width: 350px;
+  }
+  @media (max-width: 500px) {
+    width: 250px;
+    height: 330px;
+  }
 `;
 
 export const SaveButton = styled(Button)`
@@ -37,6 +50,25 @@ export const SaveButton = styled(Button)`
   font-size: 16px;
   line-height: 19px;
   color: #fff;
+  @media (max-width: 1200px) {
+    font-size: 16px;
+    width: 110px;
+    height: 28px;
+  }
+  @media (max-width: 900px) {
+    font-size: 15px;
+    width: 100px;
+  }
+  @media (max-width: 700px) {
+    font-size: 14px;
+    width: 90px;
+    height: 28px;
+  }
+  @media (max-width: 500px) {
+    font-size: 12px;
+    width: 80px;
+    height: 24px;
+  }
 
   &:hover {
     color: #47f960;
@@ -58,6 +90,25 @@ export const CancelButton = styled(Button)`
   font-size: 16px;
   line-height: 19px;
   color: #000;
+  @media (max-width: 1200px) {
+    font-size: 16px;
+    width: 110px;
+    height: 28px;
+  }
+  @media (max-width: 900px) {
+    font-size: 15px;
+    width: 100px;
+  }
+  @media (max-width: 700px) {
+    font-size: 14px;
+    width: 90px;
+    height: 28px;
+  }
+  @media (max-width: 500px) {
+    font-size: 12px;
+    width: 80px;
+    height: 24px;
+  }
 
   &:hover {
     background: #999;
@@ -71,6 +122,19 @@ export const ModalTitle = styled(Typography)`
   font-size: 22px;
   line-height: 26px;
   color: #000;
+  @media (max-width: 1200px) {
+    font-size: 20px;
+  }
+  @media (max-width: 900px) {
+    font-size: 18px;
+  }
+  @media (max-width: 700px) {
+    font-size: 16px;
+  }
+  @media (max-width: 500px) {
+    font-size: 14px;
+    padding: 20px 0 0 20px;
+  }
 `;
 
 export const InputName = styled(Typography)`
@@ -78,6 +142,11 @@ export const InputName = styled(Typography)`
   font-size: 16px;
   line-height: 19px;
   margin: 24px 0 0 24px;
+  @media (max-width: 500px) {
+    margin-top: 16px;
+    font-size: 14px;
+    margin: 20px 0 0 20px;
+  }
 `;
 
 export const TitleInput = styled.input`
@@ -92,6 +161,20 @@ export const TitleInput = styled.input`
   font-size: 14px;
   line-height: 16px;
   padding-left: 10px;
+  @media (max-width: 1200px) {
+    width: 500px;
+  }
+  @media (max-width: 900px) {
+    width: 400px;
+  }
+  @media (max-width: 700px) {
+    width: 300px;
+  }
+  @media (max-width: 500px) {
+    width: 200px;
+    font-size: 12px;
+    margin: 8px 0 0 20px;
+  }
 `;
 
 export const ContentInput = styled.textarea`
@@ -107,4 +190,18 @@ export const ContentInput = styled.textarea`
   line-height: 16px;
   padding-left: 10px;
   padding-top: 10px;
+  @media (max-width: 1200px) {
+    width: 500px;
+  }
+  @media (max-width: 900px) {
+    width: 400px;
+  }
+  @media (max-width: 700px) {
+    width: 300px;
+  }
+  @media (max-width: 500px) {
+    width: 200px;
+    font-size: 12px;
+    margin: 8px 0 0 20px;
+  }
 `;

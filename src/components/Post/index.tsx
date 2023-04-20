@@ -38,7 +38,7 @@ const Post = ({ post }: Props) => {
     <div>
       <MyContainer key={id}>
         <TitleBox>
-          <Title>{title.substring(0, 35)}</Title>
+          <Title>{title.substring(0, 30)}</Title>
           {loggedUser === username && (
             <IconWrapper>
               <IconButton onClick={() => setOpenDeleteModal(true)}>

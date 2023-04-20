@@ -31,6 +31,11 @@ export const MyBox = styled(Box)`
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 16px;
+
+  @media (max-width: 600px) {
+    width: 250px;
+    height: 103px;
+  }
 `;
 
 export const Title = styled(Typography)`
@@ -39,6 +44,13 @@ export const Title = styled(Typography)`
   line-height: 26px;
   margin-left: 24px;
   margin-top: 24px;
+  @media (max-width: 600px) {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-left: 16px;
+    margin-top: 10px;
+  }
 `;
 
 export const InputTitle = styled(Typography)`
@@ -47,6 +59,13 @@ export const InputTitle = styled(Typography)`
   line-height: 19px;
   margin-left: 24px;
   margin-top: 24px;
+  @media (max-width: 600px) {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 15px;
+    margin-left: 16px;
+    margin-top: 8px;
+  }
 `;
 
 export const MyInput = styled.input`
@@ -59,9 +78,16 @@ export const MyInput = styled.input`
   border-radius: 8px;
 
   font-weight: 400;
-  font-size: 14px;
+  font-size: 10px;
   line-height: 16px;
   padding-left: 10px;
+
+  @media (max-width: 600px) {
+    width: 200px;
+    height: 16px;
+    margin-left: 16px;
+    margin-top: 4px;
+  }
 `;
 
 export const MyButton = styled(Button)<{ disabled?: boolean }>`
@@ -78,6 +104,14 @@ export const MyButton = styled(Button)<{ disabled?: boolean }>`
   font-size: 16px;
   line-height: 19px;
   color: #fff;
+
+  @media (max-width: 600px) {
+    width: 55px;
+    height: 15px;
+    margin: 6px 16px;
+    font-size: 10px;
+    font-weight: 600;
+  }
 
   &:hover {
     color: #7695ec;
