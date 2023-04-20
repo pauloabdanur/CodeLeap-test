@@ -60,7 +60,7 @@ const MainScreen = () => {
         {content}
         <Box display="flex" justifyContent="center" margin="25px">
           <Pagination
-            count={Math.ceil(postsCount / 10)}
+            count={Math.ceil(postsCount / 10) - 1}
             onChange={handlePageChange}
           />
         </Box>
