@@ -90,6 +90,7 @@ export const Content = styled(Typography)`
   color: #000;
 
   word-wrap: break-word;
+  white-space: pre-line;
 
   margin: 16px 24px 24px 24px;
   text-align: left;
