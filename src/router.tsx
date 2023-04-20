@@ -5,7 +5,7 @@ import MainScreen from './pages/MainScreen';
 
 export const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/CodeLeap-test">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
