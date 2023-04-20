@@ -14,17 +14,17 @@ import { setUsername } from '../../redux/features/userName/userNameSlice';
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [user, setUser] = useState('');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setInputValue(e.target.value);
+    setUser(e.target.value);
   };
 
   const handleClick = () => {
-    dispatch(setUsername(inputValue));
+    localStorage.setItem('username', JSON.stringify(user));
     navigate('/start');
   };
 
@@ -36,11 +36,11 @@ const SignUp = () => {
         <InputTitle>Please enter your username</InputTitle>
         <MyInput
           placeholder="ex: Paulo Abdanur"
-          value={inputValue}
+          value={user}
           onChange={handleChange}
         />
         <Box display="flex" justifyContent="flex-end">
-          <MyButton disabled={!inputValue} onClick={handleClick}>
+          <MyButton disabled={!user} onClick={handleClick}>
             Enter
           </MyButton>
         </Box>

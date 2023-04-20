@@ -10,11 +10,12 @@ import {
 import { Box } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { addNewPost } from '../../redux/features/post/postSlice';
+import { addNewPost } from '../../actions/addNewPost';
+import { getUser } from '../../utils';
 
 const NewPost = () => {
   const dispatch = useAppDispatch();
-  const username = useAppSelector((state) => state.username.name);
+  const username = getUser() as string;
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');

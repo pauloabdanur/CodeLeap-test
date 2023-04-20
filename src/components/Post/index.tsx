@@ -18,6 +18,7 @@ import { useState } from 'react';
 import DeleteModal from '../DeleteModal';
 import EditModal from '../EditModal';
 import type { PostType } from '../../types';
+import { getUser } from '../../utils';
 
 type Props = {
   post: PostType;
@@ -28,19 +29,23 @@ const Post = ({ post }: Props) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
 
+  const loggedUser = getUser();
+
   return (
     <div>
       <MyContainer key={id}>
         <TitleBox>
           <Title>{title}</Title>
-          <IconWrapper>
-            <IconButton onClick={() => setOpenDeleteModal(true)}>
-              <Icon src={deleteIcon} alt="" />
-            </IconButton>
-            <IconButton onClick={() => setOpenEditModal(true)}>
-              <Icon src={editIcon} alt="" />
-            </IconButton>
-          </IconWrapper>
+          {loggedUser === username && (
+            <IconWrapper>
+              <IconButton onClick={() => setOpenDeleteModal(true)}>
+                <Icon src={deleteIcon} alt="" />
+              </IconButton>
+              <IconButton onClick={() => setOpenEditModal(true)}>
+                <Icon src={editIcon} alt="" />
+              </IconButton>
+            </IconWrapper>
+          )}
         </TitleBox>
         <ContentWrapper>
           <Box display="flex" justifyContent="space-between">
