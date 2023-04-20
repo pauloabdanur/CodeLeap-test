@@ -9,39 +9,33 @@ import {
 } from './styles';
 import { Box } from '@mui/material';
 
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { createPost } from '../../redux/features/post/postSlice';
-
-import { v4 as uuidv4 } from 'uuid';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { addNewPost } from '../../redux/features/post/postSlice';
 
 const NewPost = () => {
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.username.name);
 
-  const [titleValue, setTitleValue] = useState('');
-  const [contentValue, setContentValue] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setTitleValue(e.target.value);
+    setTitle(e.target.value);
   };
 
   const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
-    setContentValue(e.target.value);
+    setContent(e.target.value);
   };
 
   const handleClick = () => {
-    dispatch(
-      createPost({
-        id: uuidv4(),
-        username: username,
-        title: titleValue,
-        content: contentValue,
-      })
-    );
-    setTitleValue('');
-    setContentValue('');
+    if (title !== '' && content !== '') {
+      const post = { username, title, content };
+      dispatch(addNewPost(post));
+    }
+    setTitle('');
+    setContent('');
   };
 
   return (
@@ -50,17 +44,17 @@ const NewPost = () => {
       <InputName>Title</InputName>
       <TitleInput
         placeholder="ex: Hello World"
-        value={titleValue}
+        value={title}
         onChange={handleTitleChange}
       />
       <InputName>Content</InputName>
       <ContentInput
         placeholder="Content"
-        value={contentValue}
+        value={content}
         onChange={handleContentChange}
       />
       <Box display="flex" justifyContent="flex-end">
-        <MyButton disabled={!titleValue || !contentValue} onClick={handleClick}>
+        <MyButton disabled={!title || !content} onClick={handleClick}>
           Enter
         </MyButton>
       </Box>

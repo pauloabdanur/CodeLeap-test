@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { PostType } from '../../../types';
+import { NewPostType, PostType } from '../../../types';
 
 export interface PostState {
   posts: PostType[];
@@ -29,61 +29,58 @@ export const fetchPosts = createAsyncThunk(
   }
 );
 
-export const addNewPost = createAsyncThunk('posts/addNewPost', async () => {
-  try {
-    const response = await axios.post('https://dev.codeleap.co.uk/careers/');
-    console.log('response post');
-    console.log(response.data);
-    return response.data;
-  } catch (err: any) {
-    return err.message;
+export const addNewPost = createAsyncThunk(
+  'posts/addNewPost',
+  async (post: NewPostType) => {
+    try {
+      const response = await axios.post(
+        'https://dev.codeleap.co.uk/careers/',
+        {
+          username: post.username,
+          title: post.title,
+          content: post.content,
+        },
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+      return response.data;
+    } catch (err: any) {
+      console.log(err.message);
+      return err;
+    }
   }
-});
+);
 
 const PostSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {
-    createPost: {
-      reducer(state, action: PayloadAction<PostType>) {
-        state.posts.unshift(action.payload);
-      },
-      prepare(id, username, created_datetime, title, content) {
-        return {
-          payload: {
-            id,
-            username,
-            created_datetime,
-            title,
-            content,
-          },
-        };
-      },
-    },
-    deletePost: (state, action: PayloadAction<{ id: number }>) => {
-      state.posts = state.posts.filter((post) => post.id !== action.payload.id);
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPosts.pending, (state, action) => {
+      .addCase(fetchPosts.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(fetchPosts.fulfilled, (state, action) => {
-        state.status = 'complete';
-        state.posts = action.payload;
-      })
+      .addCase(
+        fetchPosts.fulfilled,
+        (state, action: PayloadAction<PostType[]>) => {
+          state.status = 'complete';
+          state.posts = action.payload;
+        }
+      )
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       })
-      .addCase(addNewPost.fulfilled, (state, action) => {
-        console.log('add post complete');
-        console.log(action.payload);
-        state.posts.unshift(action.payload);
-      });
+      .addCase(
+        addNewPost.fulfilled,
+        (state, action: PayloadAction<PostType>) => {
+          state.status = 'idle';
+          state.posts.unshift(action.payload);
+        }
+      );
   },
 });
 
-export const { createPost } = PostSlice.actions;
+// export const { createPost } = PostSlice.actions;
 export const postReducer = PostSlice.reducer;

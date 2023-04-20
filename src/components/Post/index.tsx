@@ -30,7 +30,7 @@ const Post = ({ post }: Props) => {
 
   return (
     <div>
-      <MyContainer>
+      <MyContainer key={id}>
         <TitleBox>
           <Title>{title}</Title>
           <IconWrapper>
