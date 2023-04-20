@@ -9,12 +9,14 @@ import { PostType } from '../../../types';
 
 export interface PostState {
   posts: PostType[];
+  count: number;
   status: 'idle' | 'loading' | 'complete' | 'failed';
   error: string | null | undefined;
 }
 
 const initialState: PostState = {
   posts: [],
+  count: 0,
   status: 'idle',
   error: null,
 };
@@ -28,13 +30,11 @@ const PostSlice = createSlice({
       .addCase(fetchPosts.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(
-        fetchPosts.fulfilled,
-        (state, action: PayloadAction<PostType[]>) => {
-          state.status = 'complete';
-          state.posts = action.payload;
-        }
-      )
+      .addCase(fetchPosts.fulfilled, (state, action) => {
+        state.status = 'complete';
+        state.count = action.payload.count;
+        state.posts = action.payload.results;
+      })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;

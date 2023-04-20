@@ -7,8 +7,9 @@ export const fetchPosts = createAsyncThunk(
     try {
       const response = await axios
         .get(`https://dev.codeleap.co.uk/careers/?limit=10&offset=${offset}`)
-        .then((res) => res.data)
-        .then((res) => res.results);
+        .then((res) => {
+          return res.data;
+        });
       return response;
     } catch (err: any) {
       return err.message;

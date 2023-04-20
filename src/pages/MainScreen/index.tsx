@@ -6,12 +6,15 @@ import { fetchPosts } from '../../actions/fetchPosts';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { getUser } from '../../utils';
 import { useNavigate } from 'react-router-dom';
+import { Box, Pagination } from '@mui/material';
 
 const MainScreen = () => {
   const posts = useAppSelector((state) => state.posts.posts);
   const postStatus = useAppSelector((state) => state.posts.status);
   const postError = useAppSelector((state) => state.posts.error);
+  const postsCount = useAppSelector((state) => state.posts.count);
 
+  const [offset, setOffset] = useState(0);
   const [loggedUser, setLoggedUser] = useState(getUser());
 
   const navigate = useNavigate();
@@ -26,7 +29,7 @@ const MainScreen = () => {
     if (postStatus === 'idle') {
       dispatch(fetchPosts(0));
     }
-  }, [postStatus, dispatch, loggedUser, navigate]);
+  }, [postStatus, dispatch, loggedUser, navigate, offset]);
 
   let content;
   if (postStatus === 'loading') {
@@ -37,6 +40,14 @@ const MainScreen = () => {
     content = <p>{postError}</p>;
   }
 
+  const handlePageChange = (e: React.ChangeEvent<unknown>, page: number) => {
+    if (page === 1) {
+      dispatch(fetchPosts(0));
+    }
+    const newOffset = page * 10;
+    dispatch(fetchPosts(newOffset));
+  };
+
   return (
     <MyContainer>
       <Content>
@@ -46,6 +57,12 @@ const MainScreen = () => {
         </TitleBox>
         <NewPost />
         {content}
+        <Box display="flex" justifyContent="center" margin="25px">
+          <Pagination
+            count={Math.ceil(postsCount / 10)}
+            onChange={handlePageChange}
+          />
+        </Box>
       </Content>
     </MyContainer>
   );

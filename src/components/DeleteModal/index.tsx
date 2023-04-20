@@ -14,6 +14,7 @@ const DeleteModal = ({ id, openModal, close }: Props) => {
 
   const handleDelete = (id: number) => {
     dispatch(deletePost(id));
+    close();
   };
 
   return (
