@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/CodeLeap-test/static/css/main.828f58f6.css",
-    "main.js": "/CodeLeap-test/static/js/main.d5f9ad16.js",
+    "main.js": "/CodeLeap-test/static/js/main.46211ed8.js",
     "static/media/codeleap_logo.png": "/CodeLeap-test/static/media/codeleap_logo.4152fe297699673c6c19.png",
     "index.html": "/CodeLeap-test/index.html",
     "main.828f58f6.css.map": "/CodeLeap-test/static/css/main.828f58f6.css.map",
-    "main.d5f9ad16.js.map": "/CodeLeap-test/static/js/main.d5f9ad16.js.map"
+    "main.46211ed8.js.map": "/CodeLeap-test/static/js/main.46211ed8.js.map"
   },
   "entrypoints": [
     "static/css/main.828f58f6.css",
-    "static/js/main.d5f9ad16.js"
+    "static/js/main.46211ed8.js"
   ]
 }
