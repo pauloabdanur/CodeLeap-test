@@ -1,20 +1,32 @@
 import { Content, MyContainer, Title, TitleBox } from './styles';
 import NewPost from '../../components/NewPost';
 import { useEffect } from 'react';
-import { useAppSelector } from '../../redux/store';
-import { useNavigate } from 'react-router-dom';
 import Post from '../../components/Post';
+import { fetchPosts } from '../../redux/features/post/postSlice';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 
 const MainScreen = () => {
-  const username = useAppSelector((state) => state.username.name);
-  const posts = useAppSelector((state) => state.post.posts);
-  const navigate = useNavigate();
+  const posts = useAppSelector((state) => state.posts.posts);
+
+  const postStatus = useAppSelector((state) => state.posts.status);
+  const postError = useAppSelector((state) => state.posts.error);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (username === '') {
-      navigate('/');
+    if (postStatus === 'idle') {
+      dispatch(fetchPosts(0));
     }
-  });
+  }, [postStatus, dispatch]);
+
+  let content;
+  if (postStatus === 'loading') {
+    content = <p>"Loading..."</p>;
+  } else if (postStatus === 'complete') {
+    content = posts.map((post) => <Post post={post} key={post.id} />);
+  } else if (postStatus === 'failed') {
+    content = <p>{postError}</p>;
+  }
 
   return (
     <MyContainer>
@@ -23,9 +35,7 @@ const MainScreen = () => {
           <Title>CodeLeap Network</Title>
         </TitleBox>
         <NewPost />
-        {posts.map((post) => (
-          <Post post={post} username={username} key={post.id} />
-        ))}
+        {content}
       </Content>
     </MyContainer>
   );

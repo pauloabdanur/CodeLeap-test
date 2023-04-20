@@ -17,26 +17,22 @@ import editIcon from '../../assets/images/edit_icon.png';
 import { useState } from 'react';
 import DeleteModal from '../DeleteModal';
 import EditModal from '../EditModal';
+import type { PostType } from '../../types';
 
 type Props = {
-  post: {
-    id: string;
-    username: string;
-    title: string;
-    content: string;
-  };
-  username: string;
+  post: PostType;
 };
 
-const Posts = ({ post, username }: Props) => {
+const Post = ({ post }: Props) => {
+  const { id, username, created_datetime, title, content } = post;
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
 
   return (
     <div>
-      <MyContainer key={post.id}>
+      <MyContainer>
         <TitleBox>
-          <Title>{post.title}</Title>
+          <Title>{title}</Title>
           <IconWrapper>
             <IconButton onClick={() => setOpenDeleteModal(true)}>
               <Icon src={deleteIcon} alt="" />
@@ -51,10 +47,10 @@ const Posts = ({ post, username }: Props) => {
             <Author>@{username}</Author>
             <Author>25 minutes ago</Author>
           </Box>
-          <Content>{post.content}</Content>
+          <Content>{content}</Content>
         </ContentWrapper>
         <DeleteModal
-          id={post.id}
+          id={id}
           openModal={openDeleteModal}
           close={() => setOpenDeleteModal(false)}
         />
@@ -68,4 +64,4 @@ const Posts = ({ post, username }: Props) => {
   );
 };
 
-export default Posts;
+export default Post;
