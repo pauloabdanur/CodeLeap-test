@@ -1,5 +1,14 @@
 import styled from '@emotion/styled';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, keyframes } from '@mui/material';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 export const DeleteBox = styled(Box)`
   position: absolute;
@@ -12,6 +21,7 @@ export const DeleteBox = styled(Box)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: ${fadeIn} 0.8s;
 `;
 
 export const ModalTitle = styled(Typography)`

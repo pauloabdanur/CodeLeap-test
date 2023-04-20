@@ -1,5 +1,14 @@
 import styled from '@emotion/styled';
-import { Button, Container } from '@mui/material';
+import { Button, Container, keyframes } from '@mui/material';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 export const MyContainer = styled(Container)`
   display: flex;
@@ -7,6 +16,7 @@ export const MyContainer = styled(Container)`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  animation: ${fadeIn} 1s;
 `;
 
 export const MyButton = styled(Button)`

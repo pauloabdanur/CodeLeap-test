@@ -1,5 +1,14 @@
 import styled from '@emotion/styled';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, keyframes } from '@mui/material';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 export const MyContainer = styled.div`
   position: absolute;
@@ -9,6 +18,7 @@ export const MyContainer = styled.div`
   width: 100%;
   height: 100%;
   background-color: #dddddd;
+  animation: ${fadeIn} 0.8s;
 `;
 
 export const MyBox = styled(Box)`
