@@ -7,6 +7,7 @@ import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { getUser } from '../../utils';
 import { useNavigate } from 'react-router-dom';
 import { Box, Pagination } from '@mui/material';
+import Loader from '../../components/Loader';
 
 const MainScreen = () => {
   const posts = useAppSelector((state) => state.posts.posts);
@@ -33,7 +34,7 @@ const MainScreen = () => {
 
   let content;
   if (postStatus === 'loading') {
-    content = <p>"Loading..."</p>;
+    content = <Loader />;
   } else if (postStatus === 'complete') {
     content = posts.map((post) => <Post post={post} key={post.id} />);
   } else if (postStatus === 'failed') {
