@@ -64,7 +64,7 @@ export const ContentInput = styled.textarea`
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  padding: 10px 10px 0;
+  padding: 10px 0 0 10px;
 `;
 
 export const MyButton = styled(Button)<{ disabled?: boolean }>`

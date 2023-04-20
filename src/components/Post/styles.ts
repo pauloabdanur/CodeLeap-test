@@ -3,7 +3,7 @@ import { Box, Button, Typography } from '@mui/material';
 
 export const MyContainer = styled.div`
   width: 752px;
-  height: 334px;
+  min-height: 334px;
   border: 1px solid #999999;
   border-radius: 16px;
   margin: 24px;
@@ -50,6 +50,8 @@ export const Content = styled(Typography)`
   font-size: 18px;
   line-height: 21px;
   color: #000;
+
+  word-wrap: break-word;
 
   margin: 16px 24px 24px 24px;
   text-align: left;
